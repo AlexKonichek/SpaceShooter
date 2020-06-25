@@ -6,15 +6,36 @@ class GameScene extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys()
     }
     create() {
-        console.log('GameScene loaded');
+        
         this.createBackground();
         this.player = new Player(this);
+        this.enemies = new Enemies(this);
+        
+
+        
     }
+    
     createBackground() {
-        this.bg = this.add.tileSprite(0, 0, config.width, config.height, 'bg').setOrigin(0);
+        this.bg4 = this.add.tileSprite(0, 0, config.width, config.height, 'bg4').setOrigin(0);
+        
+        this.bg1 = this.add.tileSprite(0, 0, config.width, config.height, 'bg1').setOrigin(0);
+        this.bg2 = this.add.tileSprite(0, 0, config.width, config.height, 'bg2').setOrigin(0);
+        this.bg3 = this.add.tileSprite(0, 0, config.width, config.height, 'bg3').setOrigin(0);
+        
+        
+        
+        
+
     }
     update(){
-        this.bg.tilePositionX+=7
-        this.player.move()
+        this.bg4.tilePositionX+=0;
+        this.bg1.tilePositionX+=0.5; 
+        this.bg2.tilePositionX+=2;
+        this.bg3.tilePositionX+=3;
+        
+        
+        
+        this.player.move();
+        
     }
 }

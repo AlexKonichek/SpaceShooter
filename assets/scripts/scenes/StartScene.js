@@ -9,7 +9,9 @@ class StartScene extends Phaser.Scene {
         this.setEvents();
     }
     createBackground() {
-        this.add.sprite(0, 0, 'bg').setOrigin(0);
+        this.add.sprite(0, 0, 'start').setOrigin(0);
+       
+
     }
     createText() {
         this.add.text(config.width / 2, 500, 'Tap to start', {

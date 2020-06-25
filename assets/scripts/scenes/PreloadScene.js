@@ -4,7 +4,7 @@ class PreloadScene extends Phaser.Scene {
     }
     preload() {
         this.load.atlas('ship','assets/sprites/ship.png','assets/sprites/ship.json')
-        console.log('PreloadScene.preload');
+        this.load.atlas('enemies','assets/sprites/enemies.png','assets/sprites/enemies.json')
     }
     create() {
         console.log('PreloadScene.create');

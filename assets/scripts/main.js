@@ -1,7 +1,7 @@
 let config = {
     type: Phaser.AUTO,
-    width: 1920,
-    height: 1080,
+    width: 960,
+    height: 540,
     scene: [BootScene, PreloadScene, StartScene, GameScene],
     physics:{
         default:'arcade',
