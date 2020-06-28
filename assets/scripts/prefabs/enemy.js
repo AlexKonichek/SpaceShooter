@@ -1,24 +1,44 @@
-class Enemy extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, texture, frame) {
-        super(scene, x, y, texture, frame);
-        this.init();
-        
+class Enemy extends MoveableObject {
+    static generateAttributes() {
+        const x = config.width + 200;
+        const y = Phaser.Math.Between(100, config.height - 100);
+        return {x, y, frame: `enemy${Phaser.Math.Between(1, 2)}`};
     }
-    static generate(scene){
-        const x = config.width+50;
-        const y  = Phaser.Math.Between(100, config.height-100);
-        const texture = 'enemies';
-        const id = Phaser.Math.Between(1, 2);
-        const frame = `enemy${id}`;
-        return new Enemy(scene, x, y, texture, frame)
+    static generate(scene, fires) {
+        const data = Enemy.generateAttributes();
+        return new Enemy({
+            scene,
+            fires,
+            x: data.x,
+            y: data.y,
+            texture: 'enemies',
+            frame: data.frame,
+            velocity: -250,
+            bullet: {delay: 1000, texture: 'bullet', velocity: -500},
+            origin: {x: 0, y: 0.5}
+        });
     }
-    init(){
-        this.scene.add.existing(this);
-        this.scene.physics.add.existing(this);
-        this.body.enable = true;
-        this.velocity = -400
+    init(data) {
+        super.init(data);
+        this.setOrigin(data.origin.x, data.origin.y);
+        this.fires = data.fires || new Fires(this.scene);
+        this.timer = this.scene.time.addEvent({
+            delay: data.bullet.delay,
+            loop: true,
+            callback: this.fire,
+            callbackScope: this
+        });
+        this.bullet = data.bullet;
     }
-    move(){
-        this.body.setVelocityX(this.velocity);
+    fire() {
+        this.fires.createFire(this);
+    }
+    reset() {
+        const data = Enemy.generateAttributes();
+        super.reset(data.x, data.y);
+        this.setFrame(data.frame);
+    }
+    isDead() {
+        return this.x < -this.width;
     }
 }

@@ -1,15 +1,15 @@
-class Enemies extends Phaser.Physics.Arcade.Group{
+class Fires extends Phaser.Physics.Arcade.Group{
     constructor(scene){
-        super();
-        this.scene = scene;
-        this.count = 10;
-        this.fires = new Fires(this.scene);
+        super(scene.physics.world, scene);
+        
         this.timer = this.scene.time.addEvent({
             delay:1000,
             loop: true,
             callback: this.tick,
             callbackScope:this  
               })
+    
+       
     }
     tick(){
         if(this.getLength() < this.count){
@@ -18,16 +18,16 @@ class Enemies extends Phaser.Physics.Arcade.Group{
         this.timer.remove(); 
     }
     }
-    createEnemy(){
-        let enemy = this.getFirstDead()
-        if(!enemy){
-            enemy = Enemy.generate(this.scene, this.fires);
-            this.add(enemy);
+    createFire(source){
+        let fire = this.getFirstDead()
+        if(!fire){
+            fire = Fire.generate(this.scene, source);
+            this.add(fire);
         }else{
-            enemy.reset()
+            fire.reset(source.x+20, source.y+8)
         }
          
-        enemy.move();
+        fire.move();
 
     }  
 }
