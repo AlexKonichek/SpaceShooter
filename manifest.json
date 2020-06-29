@@ -1,0 +1,5 @@
+{
+    "name": "SpaceShooter",
+    "display": "fullscreen",
+"orientation": "landscape"
+}
