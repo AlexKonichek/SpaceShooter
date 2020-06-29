@@ -36,8 +36,8 @@ class StartScene extends Phaser.Scene {
             font: '60px CurseCasual',
             fill: '#3498DB'
         };
-        this.add.text(config.width/2, 250, textTitle, textStyle).setOrigin(0.5);
-        this.add.text(config.width/2, 350, textScore, textStyle).setOrigin(0.5)
+        this.add.text(config.width/2, 150, textTitle, textStyle).setOrigin(0.5);
+        this.add.text(config.width/2, 250, textScore, textStyle).setOrigin(0.5)
 
 
 

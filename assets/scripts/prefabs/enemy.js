@@ -2,7 +2,7 @@ class Enemy extends MoveableObject {
     static generateAttributes() {
         const x = config.width + 200;
         const y = Phaser.Math.Between(100, config.height - 100);
-        return {x, y, frame: `enemy${Phaser.Math.Between(1, 2)}`};
+        return {x, y, frame: 'enemy1' };
     }
     static generate(scene, fires) {
         const data = Enemy.generateAttributes();

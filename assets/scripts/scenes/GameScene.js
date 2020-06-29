@@ -28,14 +28,15 @@ class GameScene extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.enemies, this.onOverlap, undefined, this);
         this.physics.add.overlap(this.player.fires, this.enemies.fires, this.onOverlap, undefined, this);
     }
-    onOverlap(source, target){
-        if(source !== this.player && target !== this.player){
+    onOverlap(source, target) {
+        const enemy = [source, target].find(item => item.texture.key === 'enemies');
+        if (enemy) {
             ++this.score;
-            this.scoreText.setText(`Score:${this.score}`)
+            this.scoreText.setText(`Score: ${this.score}`);
+            Exploison.generate(this, enemy.x, enemy.y);
         }
         source.setAlive(false);
         target.setAlive(false);
-        //add destroy animation
     }
     createBackground() {
         this.bg4 = this.add.tileSprite(0, 0, config.width, config.height, 'bg4').setOrigin(0);

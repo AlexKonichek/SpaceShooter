@@ -9,6 +9,7 @@ class Fire extends MoveableObject {
         };
         return new Fire(data);
     }
+    
     isDead() {
         return this.x < -this.width || this.x > config.width + this.width;
     }
