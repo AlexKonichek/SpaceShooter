@@ -31,7 +31,9 @@ class Enemy extends MoveableObject {
         this.bullet = data.bullet;
     }
     fire() {
+        if(this.fires){
         this.fires.createFire(this);
+    }
     }
     reset() {
         const data = Enemy.generateAttributes();

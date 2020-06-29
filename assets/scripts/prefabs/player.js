@@ -5,11 +5,29 @@ class Player extends Enemy {
             x: 150,
             y: config.height / 2, 
             texture: 'ship',
-            frame: 'Ship5-1',
+            frame: 'ship1',
             velocity: 500,
             bullet: {delay: 500, texture: 'fires', velocity: 750},
             origin: {x: 1, y: 0.5}
         });
+
+        // Сгенерировать набор фреймов текстуры, необходимых для анимации
+        const frames = this.scene.anims.generateFrameNames('ship', {
+            prefix: 'ship',
+            start: 1,
+            end: 4
+        });
+
+        // Создать новую анимацию на основе полученного набора фреймов
+        this.scene.anims.create({
+            key: 'shipMove',
+            frames,
+            frameRate: 24,
+            repeat: -1
+        });
+
+        // Запустить анимацию
+        this.play('shipMove');
     }
     move() {
         this.body.setVelocity(0);
@@ -24,10 +42,6 @@ class Player extends Enemy {
             this.body.setVelocityY(-this.velocity);
         } else if (this.scene.cursors.down.isDown) {
             this.body.setVelocityY(this.velocity);
-        }
-        if(this.scene.cursors.space.isDown){
-            this.fire()
-            console.log('fire');
         }
     }
 }
