@@ -9,7 +9,7 @@ class PreloadScene extends Phaser.Scene {
         this.load.image('bullet','assets/sprites/enemies/bullet.png')
     }
     create() {
-        console.log('PreloadScene.create');
+        
         this.scene.start('Start');
     }
 }
