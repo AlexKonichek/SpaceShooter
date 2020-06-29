@@ -17,7 +17,7 @@ class GameScene extends Phaser.Scene {
         
     }
     createText() {
-        this.scoreText= this.add.text(50, 50,`Score:${this.score}`, {
+        this.scoreText= this.add.text(20, 5,`Score:${this.score}`, {
             font: '20px CurseCasual',
             fill: '#3498DB'
         });
