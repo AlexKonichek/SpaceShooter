@@ -2,23 +2,7 @@ class MoveableObject extends Phaser.GameObjects.Sprite {
     constructor(data) {
         super(data.scene, data.x, data.y, data.texture, data.frame);
         this.init(data);
-        // Сгенерировать набор фреймов текстуры, необходимых для анимации
-        /* const frames = this.scene.anims.generateFrameNames(data.texture, {
-            prefix: data.texture,
-            start: 1,
-            end: 4
-        });
-
-        // Создать новую анимацию на основе полученного набора фреймов
-        this.scene.anims.create({
-            key: 'shipMove',
-            frames,
-            frameRate: 24,
-            repeat: -1
-        });
-
-        // Запустить анимацию
-        this.play('shipMove'); */
+        
     }
 
     init(data) {

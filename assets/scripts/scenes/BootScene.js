@@ -3,7 +3,7 @@ class BootScene extends Phaser.Scene {
         super('Boot');
     }
     preload() {
-        this.load.image('start', 'assets/sprites/bg/start.png');
+        this.load.image('start', 'assets/sprites/bg/startfull.png');
         this.load.image('bg1', 'assets/sprites/bg/rocks1.png');
         this.load.image('bg2', 'assets/sprites/bg/rocks2.png');
         this.load.image('bg3', 'assets/sprites/bg/rocks3.png');

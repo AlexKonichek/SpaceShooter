@@ -5,15 +5,15 @@ class Player extends Enemy {
             x: 150,
             y: config.height / 2, 
             texture: 'ship',
-            frame: 'ship1',
-            velocity: 500,
+            frame: 'ship3flight1',
+            velocity: 500,                                               
             bullet: {delay: 500, texture: 'fires', velocity: 750},
             origin: {x: 1, y: 0.5}
         });
 
         // Сгенерировать набор фреймов текстуры, необходимых для анимации
         const frames = this.scene.anims.generateFrameNames('ship', {
-            prefix: 'ship',
+            prefix: 'ship3flight',
             start: 1,
             end: 4
         });
@@ -44,4 +44,6 @@ class Player extends Enemy {
             this.body.setVelocityY(this.velocity);
         }
     }
+    
+
 }
