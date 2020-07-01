@@ -6,9 +6,12 @@ class GameScene extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys()
         this.score = 0;
         this.life = 3;
+
+        
+        
     }
     create() {
-        
+    
         this.createBackground();
         if(!this.sounds){
             this.createSounds();
@@ -18,14 +21,42 @@ class GameScene extends Phaser.Scene {
         this.addOverlap();
         this.createCompleteEvents();
         this.createText();
+        this.createButtons();
+        
         
     }
+    
+     createButtons() {
+         let buttonUp = this.add.sprite(100, config.height-100, 'up').setInteractive();
+         buttonUp.on('pointerdown', this.playerUp);
+         buttonUp.on('pointerup', this.playerNotUp);
+         let buttonDown = this.add.sprite(config.width-100, config.height-100, 'down').setInteractive();
+         buttonDown.on('pointerdown', this.playerDown);
+         buttonDown.on('pointerup', this.playerNotDown);
+        
+     }  
+    playerUp(){
+        this.scene.player.upIsDown()   
+    }
+
+    playerNotUp(){
+        this.scene.player.upIsNotDown()
+    }
+    playerDown(){
+        this.scene.player.downIsDown()
+    }
+    playerNotDown(){
+        this.scene.player.downIsNotDown()  
+    }
+    
+        
     createSounds(){
         this.sounds = {
             boom:this.sound.add('expl',{volume:0.5})
         }
 
     }
+    
     createText() {
         this.scoreText= this.add.text(40, 100,`Score:${this.score}`, {
             font: '40px CurseCasual',
@@ -53,7 +84,7 @@ class GameScene extends Phaser.Scene {
             EnemyDestroy.generate(this, enemy.x, enemy.y);
             this.sounds.boom.play();
         }else if (player){
-            console.log("player",this.life )
+           // console.log("player",this.life )
 
             //--this.life;
             this.lifeText.setText(`Life: ${this.life}`);

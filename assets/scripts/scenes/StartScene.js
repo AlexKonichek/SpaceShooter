@@ -26,6 +26,7 @@ class StartScene extends Phaser.Scene {
             this.scene.start('Game');
         });
     }
+    
     createStats(data){
         const graphics = this.add.graphics();
         graphics.fillStyle(0x000000,0.5);

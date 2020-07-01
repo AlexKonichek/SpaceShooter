@@ -4,6 +4,8 @@ class PreloadScene extends Phaser.Scene {
         
     }
     preload() {
+        
+        this.load.atlas('shipDestroy','assets/sprites/player/ship3/playerShip3Destroy.png','assets/sprites/player/ship3/playerShip3Destroy.json')
         this.load.atlas('ship','assets/sprites/player/ship3/playerShip3.png','assets/sprites/player/ship3/playerShip3.json')
         this.load.atlas('enemies','assets/sprites/enemies/enemy.png','assets/sprites/enemies/enemy.json')
         this.load.atlas('enemiesCrash','assets/sprites/enemies/enemiesCrash.png','assets/sprites/enemies/enemiesCrash.json')
@@ -15,6 +17,8 @@ class PreloadScene extends Phaser.Scene {
         this.load.image('bullet','assets/sprites/enemies/bullet.png')
 
         this.load.audio('expl','assets/sounds/contra-sfx-9.mp3')
+        this.load.image('up', 'assets/sprites/up.png');
+        this.load.image('down', 'assets/sprites/down.png');
     }
     create() {
         
